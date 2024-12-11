@@ -34,8 +34,9 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            offset: const Offset(0, 4),
-            blurRadius: 12,
+            offset: const Offset(0, 1),
+            blurRadius: 16,
+            spreadRadius: 2,
           ),
         ],
       ),
@@ -46,6 +47,7 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
           return Expanded(
             child: _BottomNavBarItem(
               icon: item.icon,
+              activeIcon: item.activeIcon,
               label: item.title,
               isActive: index == widget.selectedIndex,
               onTap: () => widget.onSelectIndex(index),
@@ -60,6 +62,7 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
 class _BottomNavBarItem extends StatelessWidget {
   const _BottomNavBarItem({
     required this.icon,
+    this.activeIcon,
     this.label,
     this.onTap,
     this.isActive = false,
@@ -69,42 +72,29 @@ class _BottomNavBarItem extends StatelessWidget {
 
   final String icon;
 
+  final String? activeIcon;
+
   final VoidCallback? onTap;
 
   final bool isActive;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final borderRadius = BorderRadius.circular(8);
+    const iconSize = 20.0;
+
     return Material(
-      color: Colors.white,
+      color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: borderRadius,
         child: Ink(
-          padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            color: isActive ? Colors.green : Colors.white,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgImage(
-                icon,
-                color: isActive ? Colors.white : Colors.black,
-              ),
-              if (label != null)
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                    label!,
-                    style: TextStyle(
-                      color: isActive ? Colors.white : Colors.black,
-                      fontWeight: isActive ? FontWeight.w700 : FontWeight.w400,
-                    ),
-                  ),
-                ),
-            ],
+          padding: const EdgeInsets.all(12),
+          child: SvgImage(
+            isActive ? (activeIcon ?? icon) : icon,
+            color: isActive ? theme.primaryColor : Colors.black,
+            width: iconSize,
           ),
         ),
       ),
