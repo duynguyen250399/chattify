@@ -2,16 +2,16 @@ import 'package:chattify/src/core/ui/themes/color_palette.dart';
 import 'package:chattify/src/core/ui/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
 
-final _colors = LightColors();
+final lightColors = LightColors();
 
 ThemeData get lightTheme {
   return ThemeData(
-    primaryColor: _colors.primary,
+    primaryColor: lightColors.primary,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: ThemeConstants.fontFamily,
-    splashColor: _colors.primary.withOpacity(0.15),
+    splashColor: lightColors.primary.withOpacity(0.15),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: _colors.primary,
+      backgroundColor: lightColors.primary,
       foregroundColor: Colors.white,
     ),
     appBarTheme: const AppBarTheme(
@@ -19,11 +19,13 @@ ThemeData get lightTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(_colors.primary),
+        backgroundColor: WidgetStatePropertyAll(lightColors.primary),
         foregroundColor: const WidgetStatePropertyAll(Colors.white),
         elevation: const WidgetStatePropertyAll(4),
-        shadowColor: WidgetStatePropertyAll(_colors.primary.withOpacity(0.25)),
-        overlayColor: WidgetStatePropertyAll(_colors.primary.withOpacity(0.1)),
+        shadowColor:
+            WidgetStatePropertyAll(lightColors.primary.withOpacity(0.25)),
+        overlayColor:
+            WidgetStatePropertyAll(lightColors.primary.withOpacity(0.1)),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
