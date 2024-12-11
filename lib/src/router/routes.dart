@@ -2,10 +2,17 @@ import 'package:chattify/src/features/account/presentation/pages/account_page.da
 import 'package:chattify/src/features/home/presentation/pages/home_page.dart';
 import 'package:chattify/src/features/messages/presentation/pages/messages_page.dart';
 import 'package:chattify/src/features/notifications/presentation/pages/notifications_page.dart';
+import 'package:chattify/src/features/sign_in/presentation/pages/sign_in_page.dart';
 import 'package:chattify/src/router/route_path.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = [
+  GoRoute(
+    path: RoutePath.signIn,
+    builder: (context, state) {
+      return const SignInPage();
+    },
+  ),
   StatefulShellRoute.indexedStack(
     branches: [
       StatefulShellBranch(
@@ -42,5 +49,5 @@ final routes = [
     builder: (context, state, navigationShell) {
       return HomePage(navigationShell: navigationShell);
     },
-  )
+  ),
 ];
