@@ -7,4 +7,5 @@ class AssetIcons {
   static const notificationsSolid = 'assets/icons/notifications_solid.svg';
   static const accountOutlined = 'assets/icons/account_outlined.svg';
   static const accountSolid = 'assets/icons/account_solid.svg';
+  static const google = 'assets/icons/google.svg';
 }

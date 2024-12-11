@@ -8,6 +8,7 @@ class SvgImage extends StatelessWidget {
     this.color,
     this.width,
     this.height,
+    this.fit = BoxFit.scaleDown,
   });
 
   final String path;
@@ -18,6 +19,8 @@ class SvgImage extends StatelessWidget {
 
   final double? height;
 
+  final BoxFit fit;
+
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
@@ -26,6 +29,7 @@ class SvgImage extends StatelessWidget {
           color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       width: width,
       height: height,
+      fit: fit,
     );
   }
 }
