@@ -8,7 +8,7 @@ class SvgImage extends StatelessWidget {
     this.color,
     this.width,
     this.height,
-    this.fit = BoxFit.scaleDown,
+    this.fit = BoxFit.contain,
   });
 
   final String path;

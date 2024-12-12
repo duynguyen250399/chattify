@@ -7,12 +7,14 @@ final lightColors = LightColors();
 ThemeData get lightTheme {
   return ThemeData(
     primaryColor: lightColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: lightColors.background,
     fontFamily: ThemeConstants.fontFamily,
     splashColor: lightColors.primary.withOpacity(0.15),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: lightColors.primary,
+      splashColor: lightColors.primary,
       foregroundColor: Colors.white,
+      elevation: 0,
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
@@ -41,10 +43,21 @@ ThemeData get lightTheme {
         ),
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+      selectedItemColor: lightColors.primary,
+      selectedLabelStyle: const TextStyle(
+        fontWeight: FontWeight.w600,
+      ),
+      elevation: 5,
+    ),
   );
 }
 
 class LightColors implements ColorPalette {
   @override
-  Color get primary => Colors.lightGreen;
+  Color get primary => const Color(0xff4335A7);
+
+  @override
+  Color get background => const Color(0xffF8FAFC);
 }

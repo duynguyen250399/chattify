@@ -1,6 +1,10 @@
 import 'package:chattify/src/core/ui/widgets/svg_image.dart';
-import 'package:chattify/src/features/home/presentation/pages/home_page.dart';
+import 'package:chattify/src/features/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+const _itemPadding = 12.0;
+const _itemIconGap = 8.0;
 
 class HomeBottomNavBar extends StatefulWidget {
   const HomeBottomNavBar({
@@ -21,9 +25,13 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     final viewPadding = MediaQuery.viewPaddingOf(context);
+    final height = kBottomNavigationBarHeight +
+        viewPadding.bottom +
+        _itemPadding +
+        _itemIconGap;
 
     return Container(
-      height: kBottomNavigationBarHeight + viewPadding.bottom,
+      height: height,
       padding: EdgeInsets.only(
         left: 16,
         right: 16,
@@ -90,11 +98,24 @@ class _BottomNavBarItem extends StatelessWidget {
         onTap: onTap,
         borderRadius: borderRadius,
         child: Ink(
-          padding: const EdgeInsets.all(12),
-          child: SvgImage(
-            isActive ? (activeIcon ?? icon) : icon,
-            color: isActive ? theme.primaryColor : Colors.black,
-            width: iconSize,
+          padding: const EdgeInsets.all(_itemPadding),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgImage(
+                isActive ? (activeIcon ?? icon) : icon,
+                color: isActive ? theme.primaryColor : Colors.black,
+                width: iconSize,
+              ),
+              const Gap(_itemIconGap),
+              Text(
+                label ?? '',
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: isActive ? theme.primaryColor : Colors.black,
+                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                ),
+              ),
+            ],
           ),
         ),
       ),

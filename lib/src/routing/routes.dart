@@ -1,9 +1,9 @@
-import 'package:chattify/src/features/account/presentation/pages/account_page.dart';
-import 'package:chattify/src/features/home/presentation/pages/home_page.dart';
-import 'package:chattify/src/features/messages/presentation/pages/messages_page.dart';
-import 'package:chattify/src/features/notifications/presentation/pages/notifications_page.dart';
-import 'package:chattify/src/features/sign_in/presentation/pages/sign_in_page.dart';
-import 'package:chattify/src/router/route_path.dart';
+import 'package:chattify/src/features/account/pages/account_page.dart';
+import 'package:chattify/src/features/home/pages/home_page.dart';
+import 'package:chattify/src/features/messages/pages/messages_page.dart';
+import 'package:chattify/src/features/notifications/pages/notifications_page.dart';
+import 'package:chattify/src/features/auth/pages/sign_in_page.dart';
+import 'package:chattify/src/routing/route_path.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = [

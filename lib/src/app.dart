@@ -1,6 +1,6 @@
 import 'package:chattify/src/core/ui/themes/dark_theme.dart';
 import 'package:chattify/src/core/ui/themes/light_theme.dart';
-import 'package:chattify/src/router/router.dart';
+import 'package:chattify/src/routing/router.dart';
 import 'package:flutter/material.dart';
 
 class ChattifyApp extends StatelessWidget {

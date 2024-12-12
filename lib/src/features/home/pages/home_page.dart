@@ -1,6 +1,5 @@
 import 'package:chattify/src/assets/asset_icons.dart';
-import 'package:chattify/src/core/ui/widgets/svg_image.dart';
-import 'package:chattify/src/features/home/presentation/widgets/bottom_nav_bar.dart';
+import 'package:chattify/src/features/home/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,22 +40,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: false,
         title: currentRoute.title != null
-            ? Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: SvgImage(
-                          currentRoute.icon,
-                          width: 24,
-                        ),
-                      ),
-                    ),
-                    TextSpan(text: currentRoute.title!),
-                  ],
-                ),
+            ? Text(
+                currentRoute.title!,
                 style: theme.textTheme.headlineSmall
                     ?.copyWith(fontWeight: FontWeight.w700),
               )

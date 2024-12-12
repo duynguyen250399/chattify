@@ -1,10 +1,9 @@
 import 'package:chattify/src/assets/asset_icons.dart';
 import 'package:chattify/src/core/ui/widgets/button.dart';
 import 'package:chattify/src/core/ui/widgets/svg_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -12,7 +11,7 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final a = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       body: SizedBox.expand(
         child: Column(
@@ -42,31 +41,12 @@ class SignInPage extends StatelessWidget {
               appearance: ButtonAppearance.outlined,
               label: 'Continue with Google',
               onTap: () async {
-                await _signInWithGoogle();
+                context.go('/messages');
               },
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future<UserCredential> _signInWithGoogle() async {
-    // Trigger the authentication flow
-
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
